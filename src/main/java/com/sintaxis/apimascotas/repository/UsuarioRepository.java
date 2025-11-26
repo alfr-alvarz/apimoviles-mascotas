@@ -1,0 +1,12 @@
+package com.sintaxis.apimascotas.repository;
+
+import com.sintaxis.apimascotas.model.Usuario;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.Optional;
+
+@Repository
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+    // Método extra útil: buscar usuario por correo (para login futuro)
+    Optional<Usuario> findByCorreo(String correo);
+}

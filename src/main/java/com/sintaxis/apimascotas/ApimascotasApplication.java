@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ApimascotasApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApimascotasApplication.class, args);
-	}
+    SpringApplication.run(ApimascotasApplication.class, args);
+}
 
 }
