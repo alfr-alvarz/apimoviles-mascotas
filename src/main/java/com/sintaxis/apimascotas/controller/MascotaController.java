@@ -9,8 +9,8 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/mascotas") // Ruta base: http://localhost:8080/api/mascotas
-@CrossOrigin(origins = "*") // Permite que tu App Android se conecte sin bloqueos
+@RequestMapping("/api/mascotas") 
+@CrossOrigin(origins = "*")
 public class MascotaController {
 
     @Autowired

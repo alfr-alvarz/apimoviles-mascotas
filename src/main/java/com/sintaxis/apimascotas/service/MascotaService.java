@@ -16,22 +16,18 @@ public class MascotaService {
     @Autowired
     private MascotaRepository repositorio;
 
-    // Obtener todas
     public List<Mascota> obtenerTodas() {
         return repositorio.findAll();
     }
 
-    // Guardar (Crear o Editar)
     public Mascota guardar(Mascota mascota) {
         return repositorio.save(mascota);
     }
 
-    // Obtener por ID
     public Mascota obtenerPorId(Long id) {
         return repositorio.findById(id).orElse(null);
     }
 
-    // Eliminar
     public void eliminar(Long id) {
         repositorio.deleteById(id);
     }

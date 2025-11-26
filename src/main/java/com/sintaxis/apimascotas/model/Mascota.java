@@ -1,44 +1,67 @@
 package com.sintaxis.apimascotas.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 
-@Entity 
+@Entity
+@Table(name = "mascotas")
 public class Mascota {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
-    private String tipo; 
-    private String descripcion;
 
-    // Constructor vacío (obligatorio para JPA)
+    private String nombre;
+    private String tipo; // Perro, Gato, Ave, Otro
+
+    // Relación Muchos a Uno: Muchas mascotas pertenecen a un usuario
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    @JsonIgnoreProperties("mascotas") // Evita bucles infinitos
+    private Usuario usuario;
+
+    // --- CONSTRUCTORES ---
     public Mascota() {
     }
 
-    // Constructor con datos
-    public Mascota(String nombre, String tipo, int edad, String descripcion) {
+    public Mascota(String nombre, String tipo, Usuario usuario) {
         this.nombre = nombre;
         this.tipo = tipo;
-        this.descripcion = descripcion;
+        this.usuario = usuario;
     }
 
-    // Getters y Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    // --- GETTERS Y SETTERS OBLIGATORIOS ---
+    
+    public Long getId() {
+        return id;
+    }
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public String getTipo() { return tipo; }
-    public void setTipo(String tipo) { this.tipo = tipo; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public int getEdad() { return edad; }
-    public void setEdad(int edad) { this.edad = edad; }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public String getDescripcion() { return descripcion; }
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    // ¡ESTOS SON LOS QUE FALTABAN!
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }
