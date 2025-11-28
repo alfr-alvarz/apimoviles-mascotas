@@ -1,4 +1,4 @@
-package com.sintaxis.apimascotas.service;
+package com.sintaxis.apimascotas.Auth;
 
 import com.sintaxis.apimascotas.dto.LoginRequest;
 import com.sintaxis.apimascotas.dto.MascotaDTO;
@@ -10,7 +10,6 @@ import com.sintaxis.apimascotas.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
